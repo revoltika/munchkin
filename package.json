@@ -2,7 +2,7 @@
   "name": "Munchkin",
   "productName": "Munchkin",
   "version": "0.0.1",
-  "description": "",
+  "description": "Prototype Electron application.",
   "license": "MIT",
   "main": "index.js",
   "repository": "revoltika/munchkin",

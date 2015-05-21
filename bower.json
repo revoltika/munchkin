@@ -1,0 +1,30 @@
+{
+  "name": "Munchkin",
+  "main": "index.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/revoltika/munchkin",
+  "authors": [
+    "Jaime Virgen <jaimev@annaisystems.com>"
+  ],
+  "description": "Prototype Electron application.",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "Electron-app",
+    "peer-to-peer",
+    "munchkin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.9.0",
+    "iron-ajax": "PolymerElements/iron-ajax#~0.9.5"
+  }
+}
