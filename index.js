@@ -18,7 +18,7 @@ app.on('ready', function () {
 	mainWindow = new BrowserWindow({
 		width: 1000,
 		height: 800,
-		resizable: true
+		resizable: false
 	});
 
 	mainWindow.loadUrl(`file://${__dirname}/index.html`);
