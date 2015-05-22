@@ -1,15 +1,17 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <dom-module id="rotating-cube">
-  <template>
-  </template>
+    <style>
+    </style>
+    <template>
+    </template>
 </dom-module>
 
 <script>
 
 	Polymer({is: "rotating-cube"});
 
-    var scene, camera, renderer;
+    var scene, camera, renderer, container;
     var geometry, material, mesh;
 
     init();
@@ -19,7 +21,7 @@
 
         scene = new THREE.Scene();
 
-        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera = new THREE.PerspectiveCamera( 40, 1.1 , 1, 10000 );
         camera.position.z = 1000;
 
         geometry = new THREE.BoxGeometry( 200, 200, 200 );
@@ -31,9 +33,9 @@
         renderer = new THREE.WebGLRenderer();
 
 
-        renderer.setSize( window.innerWidth , window.innerHeight );
-
-        document.body.appendChild( renderer.domElement );
+        container = document.getElementById("container");
+        renderer.setSize(500, 500);
+        container.appendChild(renderer.domElement);
 
     }
 
