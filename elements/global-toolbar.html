@@ -5,25 +5,37 @@
   	div {
     	position: absolute;
 		width: 100%;
-		height: 35px;
+		height: 50px;
 		top: 0%;
 		left: 0%;
 		background-color: rgba(1,87,155,0.1);
 		border-bottom: rgba(255,255,255,0.1) solid 1px;
+		padding: 5px 0 0 0;
 	}
 
-	div h3 {
-		font-family: 'Helvetica Neue', Helvetica, sans-serif;
-		font-size: 20px;
+	div .title {
+		font-family: 'Mohave';
+		font-size: 40px;
 		font-weight: 100;
 		margin: 0;
 		padding: 5px 0 5px 15px;
 		color: #ffffff;
 	}
+
+	div .subtitle {
+		font-family: 'Mohave';
+		font-size: 30px;
+		font-weight: 100;
+		margin: 0;
+		padding: 5px 0 5px 15px;
+		color: #ffffff;
+	}
+
   </style>
   <template>
   	<div>
-    	<h3>Munchkin</h3>
+    	<span class="title">Munchkin</span>
+    	<span class="subtitle">00985XX</span>
     </div>
   </template>
 </dom-module>
