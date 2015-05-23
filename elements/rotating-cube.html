@@ -21,7 +21,7 @@
 	Polymer({
         is: "rotating-cube",
         ready: function() {
-            init();
+            initRC();
             animate();
         }
     });
@@ -29,11 +29,11 @@
     var scene, camera, renderer, container;
     var geometry, material, mesh;
 
-    function init() {
+    function initRC() {
 
         scene = new THREE.Scene();
 
-        camera = new THREE.PerspectiveCamera( 40, 1.5 , 1, 10000 );
+        camera = new THREE.PerspectiveCamera( 40, 5/3 , 1, 10000 );
         camera.position.z = 1000;
 
         geometry = new THREE.BoxGeometry( 200, 200, 200 );

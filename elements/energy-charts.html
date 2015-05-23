@@ -4,7 +4,7 @@
   <style>
   	#energyChart{
 		width: 500px;
-		height: 100px;
+		height: 150px;
 		/*background-color: teal;*/
 
 		box-sizing:border-box;
@@ -13,17 +13,81 @@
 
 		border:1px solid rgba(255,255,255,0.1);
 	}
+
+	#chart1{
+		width: 150px;
+		height: 150px;
+	}
   </style>
   <template>
   	<div id="energyChart">
+  		<div id="chart1">
+
+  		</div>
     </div>
   </template>
 </dom-module>
 
 <script>
-  Polymer({
-  	is: "energy-charts"
-  });
+	Polymer({
+		is: "energy-charts",
+		ready: function() {
+	    	initEC();
+		}
+	});
 
+  	var initEC = function(){
+  	
+	  	var width = 150,
+		    height = 150,
+		    startAngle = -120 * (Math.PI/180),
+		    endAngle = 120 * (Math.PI/180),
+		    τ = (Math.PI/180); // http://tauday.com/tau-manifesto
+
+		var toDeg = function (percent){
+			var degreeVal,
+				diff;
+
+			diff = percent * 2.4;
+
+			degreeVal = (-120 + diff ) * τ;
+
+			return degreeVal
+		}
+
+		// An arc function with all values bound except the endAngle. So, to compute an
+		// SVG path string for a given angle, we pass an object with an endAngle
+		// property to the `arc` function, and it will return the corresponding string.
+		var arc = d3.svg.arc()
+		    .innerRadius(30)
+		    .outerRadius(50)
+		    .startAngle(startAngle) 
+
+		// Create the SVG container, and apply a transform such that the origin is the
+		// center of the canvas. This way, we don't need to position arcs individually.
+		var svg = d3.select('#chart1').append("svg")
+		    .attr("width", width)
+		    .attr("height", height)
+			.append("g")
+		    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+
+		// Add the background arc, from 0 to 100% (τ).
+		var background = svg.append("path")
+		    .datum({endAngle: endAngle})
+		    .style("fill", "#ddd")
+		    .attr("d", arc);
+
+		// Add the foreground arc in orange, currently showing 12.7%.
+		var foreground = svg.append("path")
+		    .datum({endAngle: toDeg(50) })
+		    .style("fill", "orange")
+		    .attr("d", arc);
+
+		svg.append("text")
+		   	.attr("text-anchor", "middle")
+		   	.style("fill", "orange")
+		   	.attr("y", 50)
+		   	.text("blah");
+	}
 
 </script>
