@@ -4,7 +4,7 @@
   <style>
   	#energyChart{
 		width: 500px;
-		height: 150px;
+		height: 300px;
 		/*background-color: teal;*/
 
 		box-sizing:border-box;
@@ -14,16 +14,21 @@
 		border:1px solid rgba(255,255,255,0.1);
 	}
 
-	#chart1{
+	.chartArc{
+		position: relative;
+		float: left;
 		width: 150px;
 		height: 150px;
 	}
   </style>
   <template>
   	<div id="energyChart">
-  		<div id="chart1">
-
-  		</div>
+  		<div class="chartArc" id="chart1"></div>
+  		<div class="chartArc" id="chart2"></div>
+  		<div class="chartArc" id="chart3"></div>
+  		<div class="chartArc" id="chart4"></div>
+  		<div class="chartArc" id="chart5"></div>
+  		<div class="chartArc" id="chart6"></div>
     </div>
   </template>
 </dom-module>
@@ -32,16 +37,22 @@
 	Polymer({
 		is: "energy-charts",
 		ready: function() {
-	    	initEC();
+	    	initEC("chart1","Shields",90);
+	    	initEC("chart2","Weapons",20);
+	    	initEC("chart3","Warp",5);
+	    	initEC("chart4","Science",45);
+	    	initEC("chart5","Engineering",70);
+	    	initEC("chart6","Comms",30);
 		}
 	});
 
-  	var initEC = function(){
+  	var initEC = function(domElm,titleString,dataValue){
   	
 	  	var width = 150,
 		    height = 150,
 		    startAngle = -120 * (Math.PI/180),
 		    endAngle = 120 * (Math.PI/180),
+		    color = 'rgba(255,255,255,1)';
 		    τ = (Math.PI/180); // http://tauday.com/tau-manifesto
 
 		var toDeg = function (percent){
@@ -55,39 +66,49 @@
 			return degreeVal
 		}
 
-		// An arc function with all values bound except the endAngle. So, to compute an
-		// SVG path string for a given angle, we pass an object with an endAngle
-		// property to the `arc` function, and it will return the corresponding string.
+		if(dataValue < 95 && dataValue >= 70){
+			color = 'rgba(0, 176, 255,0.3)';
+		}
+
+		if(dataValue < 70 && dataValue >= 40){
+			color = 'rgba(174, 234, 0,0.3)';
+		}
+
+		if(dataValue < 40 && dataValue >= 10){
+			color = 'rgba(255, 109, 0,1)';
+		}
+
+		if(dataValue < 10 && dataValue > 0){
+			color = 'rgba(255, 0, 0,1)';
+		}
+
 		var arc = d3.svg.arc()
 		    .innerRadius(30)
 		    .outerRadius(50)
 		    .startAngle(startAngle) 
 
-		// Create the SVG container, and apply a transform such that the origin is the
-		// center of the canvas. This way, we don't need to position arcs individually.
-		var svg = d3.select('#chart1').append("svg")
+		var svg = d3.select('#'+ domElm).append("svg")
 		    .attr("width", width)
 		    .attr("height", height)
 			.append("g")
 		    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
 
-		// Add the background arc, from 0 to 100% (τ).
 		var background = svg.append("path")
 		    .datum({endAngle: endAngle})
-		    .style("fill", "#ddd")
+		    .style("fill", "rgba(255,255,255,0.2)")
 		    .attr("d", arc);
 
-		// Add the foreground arc in orange, currently showing 12.7%.
 		var foreground = svg.append("path")
-		    .datum({endAngle: toDeg(50) })
-		    .style("fill", "orange")
+		    .datum({endAngle: toDeg(dataValue) })
+		    .style("fill", color)
 		    .attr("d", arc);
 
 		svg.append("text")
 		   	.attr("text-anchor", "middle")
-		   	.style("fill", "orange")
+		   	.style("fill", color)
 		   	.attr("y", 50)
-		   	.text("blah");
+		   	.text(titleString);
+
 	}
 
 </script>
