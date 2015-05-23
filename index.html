@@ -12,16 +12,19 @@
 		<link rel="import" href="elements/global-toolbar.html">
 		<link rel="import" href="elements/rotating-cube.html">
 		<link rel="import" href="elements/progress-bar.html">
+		<link rel="import" href="elements/energy-charts.html">
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/app.css">
 
 	</head>
 	<body>
-		<global-toolbar></global-toolbar>
 		<progress-bar></progress-bar>
-		<rotating-cube></rotating-cube>
-		<div class="square" id="container">
-        </div>
+
+		<global-toolbar class="dash-widget"></global-toolbar>		
+
+		<rotating-cube class="dash-widget"></rotating-cube>
+
+        <energy-charts class="dash-widget"></energy-charts>
 	</body>
 </html>

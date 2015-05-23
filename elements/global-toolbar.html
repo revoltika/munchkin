@@ -2,13 +2,17 @@
 
 <dom-module id="global-toolbar">
   <style>
-  	div {
+  	#globalToolbar{
     	position: relative;
-		width: 100%;
+		width: 1000px;
 		height: 50px;
 		background-color: rgba(0,0,0,1);
-		border-bottom: rgba(255,255,255,0.1) solid 1px;
-		padding: 0px 0 0 0;
+
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+
+		border: rgba(255,255,255,0.1) solid 1px;
 	}
 
 	div .title {
@@ -50,8 +54,8 @@
 	}
 
   </style>
-  <template>span
-  	<div>
+  <template>
+  	<div id="globalToolbar">
     	<span class="title">Munchkin</span>
     	<span class="navigationRow">
     		<span class="navButton" href="/">HELM</span>

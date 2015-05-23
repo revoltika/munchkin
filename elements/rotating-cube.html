@@ -2,26 +2,38 @@
 
 <dom-module id="rotating-cube">
     <style>
+
+    #actualChart{
+        width: 500px;
+        height: 300px;
+    }
+
     </style>
     <template>
+
+        <div id="actualChart"></div>
+
     </template>
 </dom-module>
 
 <script>
 
-	Polymer({is: "rotating-cube"});
+	Polymer({
+        is: "rotating-cube",
+        ready: function() {
+            init();
+            animate();
+        }
+    });
 
     var scene, camera, renderer, container;
     var geometry, material, mesh;
-
-    init();
-    animate();
 
     function init() {
 
         scene = new THREE.Scene();
 
-        camera = new THREE.PerspectiveCamera( 40, 1.1 , 1, 10000 );
+        camera = new THREE.PerspectiveCamera( 40, 1.5 , 1, 10000 );
         camera.position.z = 1000;
 
         geometry = new THREE.BoxGeometry( 200, 200, 200 );
@@ -33,8 +45,8 @@
         renderer = new THREE.WebGLRenderer();
 
 
-        container = document.getElementById("container");
-        renderer.setSize(500, 500);
+        container = document.getElementById('actualChart');
+        renderer.setSize(500, 300);
         container.appendChild(renderer.domElement);
 
     }
