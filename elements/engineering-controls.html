@@ -1,0 +1,68 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="engineering-controls">
+  <style>
+  	:host{
+      width: 500px;
+      height: 300px;
+      /*border: 1px solid rgba(255,255,255,0.1);*/
+    }
+
+    input[type="range"].range 
+    { 
+      cursor: pointer;
+      width: 450px;
+      height: 35px;
+      -webkit-appearance: none; 
+      z-index: 200;  
+      background-color: rgba(230,230,230,0.1);
+      margin-top: 10px; 
+      margin-left: 25px;
+    }
+
+    /*customised range when focusing on input */ input[type="range"].range:focus
+    {
+      border: 0 !imporant; 
+      outline: none !important; 
+    }
+
+    /*customised range slider icon*/ input[type="range"].range::-webkit-slider-thumb 
+    {
+      -webkit-appearance: none; 
+      width: 10px; 
+      height: 35px; 
+      background-color: #555;
+      background-image: -webkit-linear-gradient(right, #4DDBFF, #00CCFF); 
+    }
+
+  </style>
+  <template>
+  	<div>
+      <div id="engCtrl1">
+        <input class="range" type="range" /> </div>
+        <input class="range" type="range" /> </div>
+
+        <input class="range" type="range" /> </div>
+        <input class="range" type="range" /> </div>
+        
+        <input class="range" type="range" /> </div>
+        <input class="range" type="range" /> </div>
+    </div>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "engineering-controls",
+    ready: function() {
+        initEngC("engCtrl1","Shields",90);
+    }
+  });
+
+  var initEngC = function(domElm,titleString,dataValue){
+
+
+  }
+
+
+</script>
