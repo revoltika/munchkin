@@ -1,0 +1,82 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="time-location">
+  <style>
+  	:host{
+      width: 500px;
+      height: 100px;
+      box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      -webkit-box-sizing:border-box;
+      /*border: 1px solid rgba(255,255,255,0.1);*/
+
+      font-family: 'Mohave';
+      font-size: 40px;
+      font-weight: 100;
+      color: rgba(255,255,255,0.5);
+
+      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .clockCont{
+      position: relative;
+      float: left;
+      width: 240px;
+      height: 100px;
+      padding-top: 30px;
+      text-align: center;
+    }
+
+    .locationCont{
+      position: relative;
+      float: right;
+      width: 240px;
+      height: 100px;
+      padding-top: 30px;
+      text-align: center;
+    }
+
+  </style>
+  <template>
+  	<div>
+      <div class="clockCont"> <span id="tl-h">00</span> : <span id="tl-m">00</span> : <span id="tl-s">00</span> </div>
+
+      <div class="locationCont"> 10 : B : 36 </div>
+    </div>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "time-location",
+    ready: function() {
+        startTime();
+    }
+  });
+
+
+  function startTime() {
+      var today=new Date();
+      var h=today.getHours();
+      var m=today.getMinutes();
+      var s=today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('tl-h').innerHTML = h;
+      document.getElementById('tl-m').innerHTML = m;
+      document.getElementById('tl-s').innerHTML = s;
+
+
+      var t = setTimeout(function(){startTime()},500);
+  }
+
+  function checkTime(i) {
+      if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+  }
+
+
+
+</script>
