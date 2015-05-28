@@ -1,0 +1,84 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="message-status">
+  <style>
+  	:host{
+      width: 500px;
+      height: 100px;
+      box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      -webkit-box-sizing:border-box;
+      /*border: 1px solid rgba(255,255,255,0.1);*/
+
+      font-family: 'Mohave';
+      font-size: 40px;
+      font-weight: 100;
+      color: rgba(255,255,255,1);
+
+      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: hidden;
+
+      text-align: center;
+    }
+
+    .message{
+      margin-top: 35px;
+    }
+
+  </style>
+  <template>
+  	<div>
+      
+      <h1 class="message"> Incoming Transmission </h1>
+
+    </div>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: "message-status",
+    ready: function() {
+
+      startBlinking(this);
+        
+    }
+  });
+
+  var x=1;
+  var set;
+  var domElm;
+
+  function Timer() 
+  {
+      set=1;
+      if(x==0 && set==1) {
+          domElm.style.background='#000';
+          x=1;
+          set=0;
+      }
+      if(x==1 && set==1) {
+          domElm.style.background='#ff0000';
+          x=0;
+          set=0;
+      }
+  }
+
+  var timerInterval = null;
+
+  startBlinking = function(elm) {
+    domElm = elm;
+     if(timerInterval === null)
+         timerInterval = setInterval(Timer, 300);
+  }
+
+  stopBlinking = function() {
+      if(timerInterval !== null) {
+          clearInterval(timerInterval)
+          timerInterval = null
+      }
+  }
+
+
+</script>
