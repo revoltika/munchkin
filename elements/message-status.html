@@ -43,7 +43,16 @@
 
       startBlinking(this);
         
+    },
+
+    listeners: {
+      'tap': 'regularTap'
+    },
+
+    regularTap: function(e) {
+      stopBlinking(this);
     }
+
   });
 
   var x=1;
@@ -73,10 +82,11 @@
          timerInterval = setInterval(Timer, 300);
   }
 
-  stopBlinking = function() {
+  stopBlinking = function(elm) {
       if(timerInterval !== null) {
           clearInterval(timerInterval)
           timerInterval = null
+          elm.style.background='#000';
       }
   }
 
