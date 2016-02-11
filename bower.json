@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "homepage": "https://github.com/revoltika/munchkin",
   "authors": [
-    "Jaime Virgen <jaimev@annaisystems.com>"
+    "Jaime Virgen <jevirgen@gmail.com>"
   ],
   "description": "Prototype Electron application.",
   "moduleType": [
