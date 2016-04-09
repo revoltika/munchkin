@@ -8,3 +8,4 @@ Quick Start
 
 - Download Latest [Electron Build](https://github.com/atom/electron/releases)
 - Point to local repository to build
+-Modularized Web Components
